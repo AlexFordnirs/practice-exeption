@@ -15,11 +15,18 @@ public class List {
         return obj[idx];
     }
 
-    public void add(Object item) {
+    public void add(Object item) throws FullListException {
+        if(cur>= obj.length){
+            throw  new FullListException("Заполнен");
+        }
         obj[cur++] = item;
     }
 
-    public void removeLast() {
-        obj[--cur] = null;
+    public void removeLast() throws EmptyListException {
+        if(cur==0){
+            throw  new EmptyListException("Список пуст");
+        }
+                obj[--cur] = null;
     }
+
 }
